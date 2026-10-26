@@ -1,0 +1,7 @@
+.env
+keys_mount/
+*.key
+*keypair*.json
+__pycache__/
+*.pyc
+.pytest_cache/

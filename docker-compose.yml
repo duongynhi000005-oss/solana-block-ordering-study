@@ -1,0 +1,13 @@
+services:
+  solana-block-ordering:
+    build: .
+    container_name: solana-block-ordering-study
+    environment:
+      - MODE=${MODE:-dry-run}
+      - SOLANA_RPC_URL=${SOLANA_RPC_URL:-https://api.mainnet-beta.solana.com}
+      - MAX_SPEND_LAMPORTS=${MAX_SPEND_LAMPORTS:-50000000}
+      - KEYPAIR_PATH=/keys/id.json
+    volumes:
+      - ./data:/app/data
+      - ${HOST_KEYS_DIR:-./keys_mount}:/keys:ro
+    command: ["--mode", "${MODE:-dry-run}", "--verify-raw-data"]
